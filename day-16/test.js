@@ -1,11 +1,23 @@
-function add() {
-  console.log("add function", arguments.callee.caller);
-  return 2 + 3;
-}
+const txt = `{
+    "name":"Rakib",
+    "hometown":"sirajganj",
+    "address": {
+        "street":"ratonkandi",
+        "bazar":"nalka",
+        "post": {
+            "gram":"moddhokhan",
+            "house":"majh"
+        }
+    },
+    "skills":["HTML","CSS","JS"]
+}`;
 
-function addThree() {
-  //   console.log("add three fucntion", this);
-  return add() + 4;
-}
+const obj = JSON.parse(txt, function (key, value) {
+  if (key == "") {
+    console.log("empty key");
+  } else {
+    console.log(key);
+  }
 
-console.log(addThree());
+  return value;
+});
